@@ -1,8 +1,21 @@
 (async function () {
-    const service = window.service;
-    const state = window.state;
+    // Ensure the Checkout SDK is loaded
+    if (!window.checkoutKitLoader) {
+        console.error('Checkout SDK loader is not available.');
+        return;
+    }
 
     try {
+        // Load the Checkout SDK module
+        const module = await window.checkoutKitLoader.load('checkout-sdk');
+
+        // Create a checkout service instance
+        const service = module.createCheckoutService();
+
+        // Load the checkout state
+        const state = await service.loadCheckout();
+        console.log('Checkout state:', state);
+
         // Initialize your custom payment method
         await service.initializePayment({
             methodId: 'custom',
@@ -37,7 +50,7 @@
             },
         });
 
-        console.log('Custom payment method initialized.');
+        console.log('Custom payment method initialized successfully.');
     } catch (error) {
         console.error('Error initializing payment:', error);
     }

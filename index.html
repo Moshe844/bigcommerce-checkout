@@ -7,25 +7,11 @@
 </head>
 <body>
     <div id="checkout-container"></div>
-    <!-- Include Checkout SDK -->
+
+    <!-- Load Checkout SDK -->
     <script src="https://checkout-sdk.bigcommerce.com/v1/loader.js"></script>
-    <!-- Include Your Custom Payment Script -->
+
+    <!-- Load Custom Payment Script -->
     <script src="checkout.js"></script>
-
-
-    <script>
-        const initSdk = async () => {
-            // Load the Checkout SDK
-            window.module = await checkoutKitLoader.load('checkout-sdk');
-            // Initialize the service
-            window.service = module.createCheckoutService();
-            // Load the checkout state
-            window.state = await service.loadCheckout('{{{ checkout.id }}}');
-    
-            console.log('Checkout state:', window.state);
-        };
-        initSdk();
-    </script>
-    
 </body>
 </html>
