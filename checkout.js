@@ -1,5 +1,6 @@
 (async function () {
-    const { createCheckoutService } = bigcommerceCheckout;
+    const { createCheckoutService } = window.checkoutSdk;
+
 
     async function initializeCustomPayment() {
         const service = createCheckoutService();
