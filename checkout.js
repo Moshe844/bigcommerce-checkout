@@ -1,5 +1,5 @@
 (async function () {
-    const { createCheckoutService } = window.checkoutSdk;
+    const { createCheckoutService } = window['checkout-sdk'];
 
 
     async function initializeCustomPayment() {
